@@ -2,109 +2,157 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Iniciar sesión | InvestaPro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InvestaPro - Acceso</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 0;
       background: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...') no-repeat center center fixed;
       background-size: cover;
-    }
-
-    .login-container {
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
 
-    .login-box {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-      text-align: center;
-      backdrop-filter: blur(10px);
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      padding: 40px 30px;
       width: 90%;
       max-width: 400px;
+      text-align: center;
     }
 
-    .login-box h2 {
-      color: #fff;
-      margin-bottom: 20px;
+    .login-container h2 {
+      margin-bottom: 30px;
+      font-size: 28px;
+      font-weight: 600;
     }
 
-    .login-box input[type="text"],
-    .login-box input[type="password"] {
-      width: 100%;
-      padding: 12px 15px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      background: rgba(255,255,255,0.3);
-      color: #fff;
-    }
-
-    .login-box input::placeholder {
-      color: #ddd;
-    }
-
-    .login-box button {
+    .login-container input {
       width: 100%;
       padding: 12px;
-      background-color: #ff6600;
+      margin: 10px 0;
       border: none;
-      color: #fff;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
       font-size: 16px;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
+      outline: none;
+    }
+
+    .login-container input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .login-container button {
       margin-top: 20px;
+      width: 100%;
+      padding: 14px;
+      background-color: #ff6600;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
     }
 
-    .login-box button:hover {
-      background-color: #e65c00;
+    .login-container button:hover {
+      background-color: #e25500;
     }
 
-    .login-box .links {
-      margin-top: 15px;
+    .error {
+      margin-top: 10px;
+      color: #ffaaaa;
       font-size: 14px;
     }
 
-    .login-box .links a {
-      color: #fff;
-      text-decoration: underline;
+    .lang-selector {
+      position: absolute;
+      top: 20px;
+      right: 20px;
     }
 
+    .lang-selector select {
+      padding: 6px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
+  <div class="lang-selector">
+    <select id="language" onchange="changeLanguage()">
+      <option value="es">Español</option>
+      <option value="en">English</option>
+      <option value="pt">Português</option>
+    </select>
+  </div>
+
   <div class="login-container">
-    <div class="login-box">
-      <h2>InvestaPro</h2>
-      <input type="text" id="username" placeholder="Introduce tu nombre de usuario" />
-      <input type="password" id="password" placeholder="Ingrese su contraseña" />
-      <button onclick="login()">Acceso</button>
-      <div class="links">
-        <a href="#" onclick="alert('Funcionalidad de recuperación aún no implementada')">¿Olvidaste tu contraseña?</a><br>
-        <a href="#" onclick="alert('Funcionalidad de registro aún no implementada')">Crear cuenta</a>
-      </div>
-    </div>
+    <h2 id="title">Iniciar sesión</h2>
+    <input type="text" id="username" placeholder="Introduce tu nombre de usuario" />
+    <input type="password" id="password" placeholder="Ingrese su contraseña" />
+    <button onclick="login()" id="loginBtn">Acceso</button>
+    <div class="error" id="error"></div>
   </div>
 
   <script>
-    function login() {
-      const user = document.getElementById('username').value;
-      const pass = document.getElementById('password').value;
+    const texts = {
+      es: {
+        title: "Iniciar sesión",
+        username: "Introduce tu nombre de usuario",
+        password: "Ingrese su contraseña",
+        login: "Acceso",
+        error: "Credenciales incorrectas",
+      },
+      en: {
+        title: "Log In",
+        username: "Enter your username",
+        password: "Enter your password",
+        login: "Log In",
+        error: "Incorrect credentials",
+      },
+      pt: {
+        title: "Entrar",
+        username: "Digite seu nome de usuário",
+        password: "Digite sua senha",
+        login: "Acessar",
+        error: "Credenciais incorretas",
+      },
+    };
 
-      if (user === 'Brian95s' && pass === 'Demian31') {
-        alert('Inicio de sesión exitoso');
+    function changeLanguage() {
+      const lang = document.getElementById("language").value;
+      document.getElementById("title").innerText = texts[lang].title;
+      document.getElementById("username").placeholder = texts[lang].username;
+      document.getElementById("password").placeholder = texts[lang].password;
+      document.getElementById("loginBtn").innerText = texts[lang].login;
+      document.getElementById("error").innerText = "";
+    }
+
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      const lang = document.getElementById("language").value;
+
+      if (user === "Brian95s" && pass === "Demian31") {
+        alert("Bienvenido, " + user);
+        // En el futuro redirige a otra página
       } else {
-        alert('Credenciales incorrectas');
+        document.getElementById("error").innerText = texts[lang].error;
       }
     }
+
+    changeLanguage(); // Set default language
   </script>
 </body>
 </html>
