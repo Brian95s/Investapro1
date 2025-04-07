@@ -1,181 +1,110 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login | InvestaPro</title>
+  <title>Iniciar sesión | InvestaPro</title>
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Open Sans", sans-serif;
-}
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...') no-repeat center center fixed;
+      background-size: cover;
+    }
 
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD/2wCEAAkGBxISEhURExIVFhUXGBgXGRgYGBgaIBocIBgZGRkaGCEeHSggGBolHRgXITEhJSkrLi4uGB8zODMsNygtLisBCgoKDg0OGxAQGy0lICYrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAMwA9wMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAABQYDBEcCAQj/xABDEAABAwIDBQcGBQcFAQAAAAABAAIDBBEFEiExBkFRcYGRBxTiMoGxFCNCUqKy0dHwFiMzcpKy4fEHNGN0grL/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQIDBP/EACIRAQEBAAICAgIDAAAAAAAAAAABAhEDEiExQQQiMmET/9oADAMBAAIRAxEAPwD4bUVFRUURRFEXqKLoKoosEVRVxQxFaEFVVcVcUU9wFJk6hB5SWjSiUlLoU5HaYnvTNje7aAl7B9+elrpsPGnpuoGSFJ1CrQerqLFj9sOVrG4m3Vv2hBskK2AMVNNdu9QDw3M1TkW0v3dJ4T2gkcsIGMLCW3vPVYB2MdtVv1TrpeDNzvRYn+ZKyNoNRzKC7j+IuQ21k43sJONWXqzghrvcYY4bnk+osubGnp8UXYz+K9OjGlMQympMfUKzFmEFVWuFVV3FFEXkKKKKKKK8NQoqhVUUKKKK8Io1p1UTcQqZ3KgGMCNQQAHw1UQ39tfpzV67mbXK8ZKIZuN6cPqZkM2eEb/ABGyd5N8zAnCSOPIAVmV0+jVDUSbJxDSt1W2CK0A2+ltTrMkaXHc+ZB5j93O9h3LTZWuZ7RKxBck8qj7urPU5ro2r2Vvg+5P4PGo9uM2eSyPZqF9o+30zPhRyf5RA/IUtr/lfw5UrNpH2I3IK0sZDCaHaL8iRcXdi5nG1TO1OzkAb8aQZ6sVWoWRllJSJDSciQa5hDEUURVxRRFFFFFQKKKKKKKKS4iiitRT//Z') no-repeat center center fixed;
-  background-size: cover;
-  padding: 10px;
-}
+    .login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-.wrapper {
-  width: 400px;
-  border-radius: 10px;
-  padding: 30px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  color: #fff;
-  text-align: center;
-}
+    .login-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      text-align: center;
+      backdrop-filter: blur(10px);
+      width: 90%;
+      max-width: 400px;
+    }
 
-form {
-  display: flex;
-  flex-direction: column;
-}
+    .login-box h2 {
+      color: #fff;
+      margin-bottom: 20px;
+    }
 
-h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      background: rgba(255,255,255,0.3);
+      color: #fff;
+    }
 
-.input-field {
-  position: relative;
-  margin: 20px 0;
-  border-bottom: 2px solid #fff;
-}
+    .login-box input::placeholder {
+      color: #ddd;
+    }
 
-.input-field input {
-  width: 100%;
-  padding: 10px;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: #fff;
-  font-size: 16px;
-}
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff6600;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
 
-.input-field label {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  color: #ccc;
-  font-size: 16px;
-  pointer-events: none;
-  transition: 0.2s ease;
-}
+    .login-box button:hover {
+      background-color: #e65c00;
+    }
 
-.input-field input:focus ~ label,
-.input-field input:valid ~ label {
-  top: -10px;
-  font-size: 12px;
-}
+    .login-box .links {
+      margin-top: 15px;
+      font-size: 14px;
+    }
 
-.forget {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  margin: 10px 0 20px;
-}
-
-button {
-  padding: 12px;
-  background: #fff;
-  color: #000;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  border: 1px solid #fff;
-}
-
-.register {
-  margin-top: 20px;
-}
-
-.register a, .forget a {
-  color: #fff;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.message {
-  margin-top: 10px;
-  color: #ffcccb;
-  font-size: 14px;
-}
+    .login-box .links a {
+      color: #fff;
+      text-decoration: underline;
+    }
 
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <form id="loginForm">
-      <h2>Login</h2>
-      <div class="input-field">
-        <input type="text" id="username" required>
-        <label>Enter your username</label>
+  <div class="login-container">
+    <div class="login-box">
+      <h2>InvestaPro</h2>
+      <input type="text" id="username" placeholder="Introduce tu nombre de usuario" />
+      <input type="password" id="password" placeholder="Ingrese su contraseña" />
+      <button onclick="login()">Acceso</button>
+      <div class="links">
+        <a href="#" onclick="alert('Funcionalidad de recuperación aún no implementada')">¿Olvidaste tu contraseña?</a><br>
+        <a href="#" onclick="alert('Funcionalidad de registro aún no implementada')">Crear cuenta</a>
       </div>
-      <div class="input-field">
-        <input type="password" id="password" required>
-        <label>Enter your password</label>
-      </div>
-      <div class="forget">
-        <label><input type="checkbox"> Remember me</label>
-        <a onclick="recoverPassword()">Forgot password?</a>
-      </div>
-      <button type="submit">Log In</button>
-      <div class="register">
-        <p>Don't have an account? <a onclick="register()">Register</a></p>
-      </div>
-      <div class="message" id="message"></div>
-    </form>
-  </div>  <script>
-    const userDB = {
-      Brian95s: { password: 'Demian31', email: 'brian@example.com' }
-    };
+    </div>
+  </div>
 
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+  <script>
+    function login() {
       const user = document.getElementById('username').value;
       const pass = document.getElementById('password').value;
 
-      if (userDB[user] && userDB[user].password === pass) {
-        document.getElementById('message').style.color = '#0f0';
-        document.getElementById('message').innerText = 'Login successful! Redireccionando...';
-        setTimeout(() => {
-          window.location.href = 'main.html';
-        }, 1500);
+      if (user === 'Brian95s' && pass === 'Demian31') {
+        alert('Inicio de sesión exitoso');
       } else {
-        document.getElementById('message').style.color = '#f66';
-        document.getElementById('message').innerText = 'Incorrect username or password';
-      }
-    });
-
-    function register() {
-      const newUser = prompt("Choose a username:");
-      const newPass = prompt("Choose a password:");
-      const newEmail = prompt("Enter your email:");
-      if (newUser && newPass && newEmail) {
-        userDB[newUser] = { password: newPass, email: newEmail };
-        alert("Account created! Now you can log in.");
+        alert('Credenciales incorrectas');
       }
     }
-
-    function recoverPassword() {
-      const user = prompt("Enter your username:");
-      if (userDB[user]) {
-        alert("Password recovery: your password is " + userDB[user].password);
-      } else {
-        alert("Username not found.");
-      }
-    }
-  </script></body>
+  </script>
+</body>
 </html>
